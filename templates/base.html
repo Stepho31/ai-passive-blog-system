@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site.title }}</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ meta_description or site.description }}">
+    <meta name="keywords" content="{{ keywords or site.keywords|join(', ') }}">
+    <meta name="author" content="{{ site.author }}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ page_title or site.title }}">
+    <meta property="og:description" content="{{ meta_description or site.description }}">
+    <meta property="og:image" content="{{ featured_image or '/static/images/default-baby-sleep.jpg' }}">
+    <meta property="og:url" content="{{ site.url }}{{ page_url or '/' }}">
+    <meta property="og:type" content="{% if is_article %}article{% else %}website{% endif %}">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page_title or site.title }}">
+    <meta name="twitter:description" content="{{ meta_description or site.description }}">
+    <meta name="twitter:image" content="{{ featured_image or '/static/images/default-baby-sleep.jpg' }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ site.url }}{{ page_url or '/' }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    {% if config.analytics.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.analytics.google_analytics }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ config.analytics.google_analytics }}');
+    </script>
+    {% endif %}
+    
+    <!-- Google AdSense -->
+    {% if config.monetization.google_adsense.enabled %}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ config.monetization.google_adsense.client_id }}" crossorigin="anonymous"></script>
+    {% endif %}
+    
+    <!-- Schema.org Markup -->
+    {% if config.seo.schema_markup %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "{% if is_article %}BlogPosting{% else %}WebSite{% endif %}",
+        "name": "{{ page_title or site.title }}",
+        "description": "{{ meta_description or site.description }}",
+        "url": "{{ site.url }}{{ page_url or '/' }}",
+        "author": {
+            "@type": "Person",
+            "name": "{{ site.author }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ site.title }}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ site.url }}/static/images/logo.png"
+            }
+        }{% if is_article %},
+        "datePublished": "{{ date_published }}",
+        "dateModified": "{{ date_modified or date_published }}",
+        "image": "{{ featured_image or '/static/images/default-baby-sleep.jpg' }}"{% endif %}
+    }
+    </script>
+    {% endif %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/static/images/logo.png" alt="{{ site.title }}" class="logo-img">
+                        <span class="logo-text">{{ site.title }}</span>
+                    </a>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/sleep-schedules">Sleep Schedules</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-cta">
+                    <a href="/free-guide" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Free Sleep Guide
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>{{ site.title }}</h3>
+                    <p>Helping families achieve peaceful nights and happy days through gentle, science-backed sleep solutions.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/blog">Latest Posts</a></li>
+                        <li><a href="/sleep-schedules">Sleep Schedules</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/free-guide">Free Sleep Guide</a></li>
+                        <li><a href="/sleep-calculator">Sleep Calculator</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/testimonials">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Get weekly sleep tips delivered to your inbox.</p>
+                    <form class="newsletter-form" action="/subscribe" method="POST">
+                        <input type="email" name="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-secondary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="legal-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-service">Terms of Service</a>
+                    <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+                </div>
+                <p class="copyright">
+                    © {{ current_year }} {{ site.title }}. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Cookie Consent Banner -->
+    {% if config.legal.cookie_consent %}
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p>We use cookies to improve your experience and for analytics. By continuing to use our site, you agree to our <a href="/privacy-policy">Privacy Policy</a>.</p>
+            <button id="accept-cookies" class="btn btn-small">Accept</button>
+            <button id="decline-cookies" class="btn btn-small btn-outline">Decline</button>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+    
+    <!-- AdSense Ad Units -->
+    {% if config.monetization.google_adsense.enabled %}
+    <!-- Responsive Display Ad -->
+    <div class="ad-container" style="text-align: center; margin: 20px 0;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="{{ config.monetization.google_adsense.client_id }}"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    {% endif %}
+</body>
+</html>

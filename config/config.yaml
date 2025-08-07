@@ -1,0 +1,111 @@
+# Baby Sleep Blog Configuration
+site:
+  title: "Sweet Dreams Baby Sleep Guide"
+  description: "Expert baby sleep tips and gentle solutions to help your little one sleep through the night. Science-backed methods for peaceful nights and happy families."
+  url: "https://sweetdreamsbabysleep.com"
+  author: "Sarah Mitchell"
+  email: "contact@sweetdreamsbabysleep.com"
+  
+  # SEO Settings
+  keywords: ["baby sleep", "infant sleep training", "baby sleep tips", "newborn sleep", "toddler sleep", "sleep schedule", "gentle sleep methods"]
+  
+# Content Generation Settings
+content:
+  posts_per_batch: 3
+  min_word_count: 1500
+  max_word_count: 3000
+  publish_schedule: "daily"  # daily, weekly, bi-weekly
+  
+# AI Configuration
+ai:
+  openai_model: "gpt-4"
+  image_model: "dall-e-3"
+  max_tokens: 4000
+  temperature: 0.7
+  
+# Monetization Settings
+monetization:
+  google_adsense:
+    enabled: true
+    client_id: "ca-pub-XXXXXXXXXXXXXXXXX"  # Replace with your AdSense ID
+    
+  amazon_associates:
+    enabled: true
+    associate_id: "sweetdreams-20"  # Replace with your Amazon Associate ID
+    
+  affiliate_programs:
+    - name: "ClickBank"
+      enabled: true
+      default_products: ["baby sleep miracle", "sleep sense program"]
+    - name: "ShareASale"
+      enabled: true
+      merchant_ids: ["12345", "67890"]  # Baby product merchants
+      
+# Social Media Automation
+social:
+  pinterest:
+    enabled: true
+    boards: ["Baby Sleep Tips", "Newborn Care", "Parenting Hacks"]
+    pins_per_day: 5
+    
+  reddit:
+    enabled: true
+    subreddits: ["Parenting", "beyondthebump", "NewParents", "sleeptrain"]
+    posts_per_week: 3
+    
+  medium:
+    enabled: true
+    publications: ["Better Humans", "The Startup"]
+    
+# SEO Configuration
+seo:
+  sitemap: true
+  robots_txt: true
+  meta_descriptions: true
+  schema_markup: true
+  
+  # Keyword Research
+  primary_keywords:
+    - "baby sleep training"
+    - "infant sleep schedule"
+    - "newborn sleep tips"
+    - "baby won't sleep"
+    - "sleep regression"
+    - "gentle sleep methods"
+    
+  long_tail_keywords:
+    - "how to get baby to sleep through the night"
+    - "baby sleep training methods that work"
+    - "newborn sleep schedule by age"
+    - "gentle sleep training for sensitive babies"
+    - "baby sleep problems solutions"
+    
+# Analytics
+analytics:
+  google_analytics: "G-XXXXXXXXXX"  # Replace with your GA4 ID
+  google_tag_manager: "GTM-XXXXXXX"  # Optional
+  
+  # Conversion tracking
+  conversion_goals:
+    - "affiliate_click"
+    - "email_signup"
+    - "product_purchase"
+    
+# Email Marketing
+email:
+  provider: "ConvertKit"  # or "Mailchimp", "AWeber"
+  signup_incentive: "Free Baby Sleep Schedule Template"
+  welcome_series: true
+  
+# Security & Legal
+legal:
+  privacy_policy: true
+  terms_of_service: true
+  affiliate_disclosure: true
+  cookie_consent: true
+  
+# Development Settings
+development:
+  hot_reload: true
+  debug_mode: false
+  test_mode: false
